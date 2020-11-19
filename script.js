@@ -1,37 +1,24 @@
-const drinkPrice = [2.30, 3.00, 2.50]; //Array van prijzen. 
-
-var drinkTotals = [0, 0, 0]
-
-var frisAantal = 0; //Variables die aantal keer een bepaald drankje bijhoud. 
-var bierAantal = 0;
-var wijnAantal = 0;
-
-// var bierAantalQeust = 0;
-// var frisAaantalQeust = 0;
-// var wijnAantalQeust = 0;
-
-
-// var aantalBitterBallen = 0;
-// var aantalBitterbalSchaalAcht = 0;
-// var aantalBitterbalSchaalZestien = 0;
-
-// const bitterBallenPrijs = [3.59, 5.40]
-// var bitterBallenTotals = [0, 0]
 
 
 var product = {
     fris: 0,
     bier: 0,
     wijn: 0,
-    // aantalBitterBallenAcht: 0,
-    // aantalBitterbalSchaalZestien: 0
 };
-// var frisQuest = prompt("Hoeveel fris wilt u?");
-// var frisQuest = parseInt(frisQuest)
-// product['fris'] = frisQuest;
-// console.log(product['fris'])
 
+const prijzen = {
+    fris: 1.20,
+    bier: 2.20,
+    wijn: 3.00
+}
 
+var totals = {
+    fris: 0,
+    bier: 0,
+    wijn: 0
+}
+
+var audio = new Audio('audio/ching.mp3');
 
 order()
 
@@ -45,12 +32,11 @@ function order() {
                 if (product['fris'] == 0 && product['bier'] == 0 && product['wijn'] == 0) {
                     alert("U heeft geen bestelling toegevoeged 🙂")
                 } else {
-                    // var data = Object.values(product);
-                    var data = JSON.stringify(product);
-                    data = data.replace(/("{|}")/gi,'"');
-                    document.getElementById("demo").innerHTML = data ;
-
-                    
+                    totals['fris'] = product['fris']*prijzen['fris']  
+                    totals['bier'] = product['bier']*prijzen['bier']  
+                    totals['wijn'] = product['wijn']*prijzen['wijn']  
+                    document.getElementById("demo").innerHTML = "Fris Aantal:" + product['fris'] + " \u20AC"+ totals['fris'] +"<br>" + "Bier Aantal:" + product['bier'] + " \u20AC"+ totals['bier'] +"<br>" + "Wijn Aantal:" + product['wijn'] + " \u20AC"+ totals['wijn'] +"<br>"
+                  
                 }
                 break;
             case 'fris':
